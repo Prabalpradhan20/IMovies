@@ -1,0 +1,82 @@
+### 1. LOGIN TO GET TOKEN
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@imovies.com",
+  "password": "password123"
+}
+
+### 2. CREATE THEATER
+POST http://localhost:5000/api/theaters
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
+
+{
+  "name": "PVR Cinemas",
+  "location": "Downtown Mall",
+  "screens": 5
+}
+### 3. GET ALL MOVIES (To find the Movie ID)
+GET http://localhost:5000/api/movies
+
+### 4. CREATE A SHOW
+POST http://localhost:5000/api/shows
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
+
+{
+  "movie": "6ae0d92268c0693186d51696",
+  "theater": "6ae0d76568c0693186d51695",
+  "showDate": "2026-11-01T00:00:00.000Z",
+  "showTime": "18:00",
+  "screenNumber": 1,
+  "price": 15.50
+}
+
+### 5. GET ALL SHOWS (To verify populate works)
+GET http://localhost:5000/api/shows
+
+
+### CREATE A MOVIE
+POST http://localhost:5000/api/movies
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
+
+{
+  "title": "Inception",
+  "description": "A thief who steals corporate secrets.",
+  "genre": "Sci-Fi",
+  "language": "English",
+  "duration": 148,
+  "rating": 8.8
+}
+
+### 6. GENERATE SEATS FOR SHOW
+POST http://localhost:5000/api/seats/generate/6ae0dbde68c0693186d51698
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
+
+{
+  "rows": 10,
+  "columns": 15
+}
+
+### 7. GET SEATS FOR SHOW
+GET http://localhost:5000/api/seats/6ae0dbde68c0693186d51698
+
+
+### 8. CREATE BOOKING
+POST http://localhost:5000/api/bookings
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
+
+{
+  "showId": "6ae0dbde68c0693186d51698",
+  "seatIds": ["PASTE_SEAT_ID_1", "PASTE_SEAT_ID_2"],
+  "totalAmount": 31.00
+}
+
+### 9. GET MY BOOKINGS
+GET http://localhost:5000/api/bookings/my-bookings
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZTBkMDNiMDgyMjI1NjdmNzFjOTU2NCIsImlhdCI6MTc5MzExOTE4NywiZXhwIjoxNzk1NzExMTg3fQ._4pkLYZsklTap1-yqCVR3elmZ_2gWSUiiNxkTEK7ruY
